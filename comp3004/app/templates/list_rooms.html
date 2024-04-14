@@ -1,0 +1,10 @@
+<!-- list_rooms.html -->
+<h1>Rooms</h1>
+<ul>
+{% for room in rooms %}
+    <li>
+        {{ room.name }} (Capacity: {{ room.capacity }}) - Available: {{ 'Yes' if room.is_available else 'No' }}
+        <a href="{{ url_for('main.edit_room', id=room.id) }}">Edit</a>
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+<p>Email: {{ user.email }}</p>
+
+<h3>Your Scheduled Training Sessions:</h3>
+<ul>
+    {% for session in sessions %}
+    <li>
+        Trainer ID: {{ session.trainer_id }}, Scheduled Time: {{ session.datetime.strftime('%Y-%m-%d %H:%M') }}
+    </li>
+    {% else %}
+    <li>No scheduled sessions.</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('main.logout') }}">Logout</a>
+{% endblock %}

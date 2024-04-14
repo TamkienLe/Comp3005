@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Register</h2>
+<form action="/register" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <label for="health_info">Health Information</label>
+        <textarea class="form-control" id="health_info" name="health_info" placeholder="Enter any relevant health information here..."></textarea>
+    </div>
+    <div class="form-group">
+        <label for="fitness_goals">Fitness Goals</label>
+        <textarea class="form-control" id="fitness_goals" name="fitness_goals" placeholder="Describe your fitness goals..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

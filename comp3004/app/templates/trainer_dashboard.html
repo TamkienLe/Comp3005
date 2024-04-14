@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Trainer Dashboard</h1>
+
+<!-- Update availability form -->
+<h2>Update Your Availability</h2>
+<form method="post">
+    <input type="hidden" name="update_availability" value="1">
+    <div class="form-group">
+        <label for="available_times">Available Times:</label>
+        <input type="text" class="form-control" id="available_times" name="available_times" value="{{ trainer.available_times }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Availability</button>
+</form>
+
+<hr>
+
+<!-- Search members form -->
+<h2>Search Member Profiles</h2>
+<form method="post">
+    <input type="hidden" name="search_members" value="1">
+    <div class="form-group">
+        <label for="search_name">Member Name:</label>
+        <input type="text" class="form-control" id="search_name" name="search_name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<!-- Display search results -->
+<h3>Search Results:</h3>
+<ul>
+    {% for member in members %}
+    <li>{{ member.username }} - Email: {{ member.email }}</li>
+    {% else %}
+    <li>No results found.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<!-- Scheduled Classes -->
+<h2>Your Scheduled Classes</h2>
+<table>
+    <tr>
+        <th>Session ID</th>
+        <th>Member ID</th>
+        <th>Trainer ID</th>
+        <th>Date/Time</th>
+    </tr>
+    {% for session in sessions %}
+    <tr>
+        <td>{{ session.id }}</td>
+        <td>{{ session.member_id }}</td>
+        <td>{{ session.trainer_id }}</td>
+        <td>{{ session.datetime.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

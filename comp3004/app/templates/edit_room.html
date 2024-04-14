@@ -1,0 +1,24 @@
+<!-- edit_room.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Room</title>
+</head>
+<body>
+    <h1>Edit Room</h1>
+    <form method="post">
+        <label for="name">Room Name:</label>
+        <input type="text" id="name" name="name" value="{{ room.name }}" required>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" value="{{ room.capacity }}" required>
+
+        <label for="is_available">Available:</label>
+        <input type="checkbox" id="is_available" name="is_available" {{ 'checked' if room.is_available else '' }}>
+
+        <button type="submit">Update Room</button>
+    </form>
+    <a href="{{ url_for('main.list_rooms') }}">Back to list</a>
+</body>
+</html>
